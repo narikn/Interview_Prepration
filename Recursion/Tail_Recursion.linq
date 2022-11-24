@@ -6,8 +6,7 @@ void Main()
 
 }
 
-
-// Tail recursion activation records gr
+// Tail recursion activation records grows upwards
 
 //Tail Recursion: 
 public void Print_TailRecursion(int n)
