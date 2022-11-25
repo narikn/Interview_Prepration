@@ -1,0 +1,111 @@
+void Main()
+{
+	List<int> ls1 = new List<int> { 1, 0, 0, 0 };
+	List<int> ls2 = new List<int> { 0, 2, 0, 0 };
+	List<int> ls3 = new List<int> { 0, 0, 2, 0 };
+	List<int> ls4 = new List<int> { 0, 0, 0, 1 };
+
+
+	List<int> lsa = new List<int> { 1, 2, 3, 4 };
+	List<int> lsb = new List<int> { 5, 6, 7, 8 };
+	List<int> lsc = new List<int> { 9, 10, 11, 12 };
+	List<int> lsd = new List<int> { 13, 14, 15, 16 };
+
+	List<List<int>> matx = new List<List<int>>() { lsa, lsb, lsc, lsd };
+	List<List<int>> mat = new List<List<int>>() { ls1, ls2, ls3, ls4 };
+
+	FillUpperMatrix_Diagonal_1(mat);
+	//FillUpperMatrix_Rowise_2(mat);
+
+	PrintMatrix(mat);
+
+}
+
+public void Fill_UpperTriangle_Diagonaly(List<List<int>> mat)
+{
+	if (mat != null)
+	{
+		int r = mat.Count;
+		int c = r;
+		if (r > 0)
+		{
+			// j_diagonalPointer Tracks diagonals
+			// j_col is to print from j_col to end column  ---->  ---> --> -->
+			for (int j_diagonalPointer = 1; j_diagonalPointer < c; j_diagonalPointer++) // fills r-1 diagonals
+			{
+				int i_Row = 0;
+				int j_Col = j_diagonalPointer;
+				for (; j_Col < c;)
+				{
+					int leftElement = mat[i_Row][j_Col - 1];
+					int bottomElement = mat[i_Row + 1][j_Col];
+					mat[i_Row][j_Col] = leftElement + bottomElement;
+					//Console.Write(" " + String.Format("{0} \t", mat[i_Row][j_Col]));
+					j_Col++;
+					i_Row++;
+				}
+			}
+
+		}
+	}
+}
+
+public void FillUpperMatrix_Rowise_2(List<List<int>> mat)
+{
+	int rows = mat.Count;
+	int columns = mat.Count;
+
+	for (int i = rows - 2; i >= 0; i--)
+	{
+		for (int j = i + 1; j < columns; j++)
+		{
+			int bottmElement = mat[i + 1][j];
+			int leftElement = mat[i][j - 1];
+			mat[i][j] = bottmElement + leftElement;
+		}
+	}
+}
+
+public void FillUpperMatrix_Diagonal_1(List<List<int>> mat)
+{
+	if (mat != null)
+	{
+		int rows = mat.Count;
+		int columns = mat.Count;
+		if (columns > 0 && rows == columns)
+		{
+			for (int j = 1; j < columns; j++)
+			{
+				int iRow = 0;
+				int jCol = j;
+				while (iRow < rows && jCol < columns)
+				{
+					int leftElement = mat[iRow][jCol - 1];
+					int bottomElemnt = mat[iRow + 1][jCol];
+
+					int sum = leftElement + bottomElemnt;
+					mat[iRow][jCol] = sum;
+					jCol++;
+					iRow++;
+				}
+			}
+		}
+	}
+}
+
+
+public void PrintMatrix(List<List<int>> items)
+{
+	int rows = items.Count;
+
+	for (int row = 0; row < rows; row++)
+	{
+		int columnsCount = items[row].Count;
+		for (int col = 0; col < columnsCount; col++)
+		{
+			Console.Write(" " + String.Format("{0} \t", items[row][col]));
+		}
+		Console.WriteLine();
+	}
+}
+

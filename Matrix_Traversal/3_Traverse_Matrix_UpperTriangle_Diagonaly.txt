@@ -1,0 +1,37 @@
+void Main()
+{
+	List<int> lsa = new List<int> { 1, 2, 3, 4 };
+	List<int> lsb = new List<int> { 5, 6, 7, 8 };
+	List<int> lsc = new List<int> { 9, 10, 11, 12 };
+	List<int> lsd = new List<int> { 13, 14, 15, 16 };
+
+	List<List<int>> matx = new List<List<int>>() { lsa, lsb, lsc, lsd };
+Traverse_UpperTriangle_Diagonaly(matx);
+}
+
+
+public void Traverse_UpperTriangle_Diagonaly(List<List<int>> mat)
+{
+	if (mat != null)
+	{
+		int r = mat.Count;
+		int c = r;
+		if (r > 0)
+		{
+			// j_diagonalPointer Tracks diagonals
+			// j_col is to print from j_col to end column  ---->  ---> --> -->
+			for (int j_diagonalPointer = 1; j_diagonalPointer < c; j_diagonalPointer++) // fills r-1 diagonals
+			{
+				int i_Row = 0;
+				int j_Col = j_diagonalPointer;
+				for (; j_Col < c;)
+				{
+					Console.Write(" " + String.Format("{0} \t", mat[i_Row][j_Col]));
+					j_Col++;
+					i_Row++;
+				}
+			}
+		}
+	}
+}
+
