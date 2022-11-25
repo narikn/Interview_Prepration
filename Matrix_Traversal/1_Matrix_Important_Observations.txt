@@ -1,0 +1,7 @@
+for a square matrix is divided diagonaly 
+
+For Lower of part of diagonal also known as lower triangle
+----------------------------------------------------------
+  => rowIndex is always Greater than or equall to column Index
+  => ie i_RowIndex => c_ColumnIndex
+  => example: 00, 10,11,20,21,22 for ( 3x3 matrix)

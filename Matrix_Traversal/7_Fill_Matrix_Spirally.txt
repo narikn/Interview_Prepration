@@ -1,0 +1,89 @@
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FillMatrixSpirally
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            var ls1 = new List<int> { 0, 0, 0 };
+            var ls2 = new List<int> { 0, 0, 0 };
+            var ls3 = new List<int> { 0, 0, 0 };
+            var mat = new List<List<int>> { ls1, ls2, ls3 };
+
+
+            int val = 1;
+            int totalElements = 9;
+            int columnsCount = 3;
+            int rowsCount = 3;
+
+            int startRowIndex = 0;
+            int endRowIndex = rowsCount - 1;
+            int startColumnIndex = 0;
+            int endColumnIndex = columnsCount - 1;
+
+            while (totalElements > 0)
+            {
+                // left to right
+                for (int j = startColumnIndex; j <= endColumnIndex && totalElements > 0; j++)
+                {
+                    mat[startRowIndex][j] = val++;
+                    totalElements--;
+                }
+
+                startRowIndex++;
+
+                // top  to bottom
+                for (int i = startRowIndex; i <= endRowIndex && totalElements > 0; i++)
+                {
+                    mat[i][endColumnIndex] = val++;
+                    totalElements--;
+                }
+
+                endColumnIndex--;
+
+                // right  to left
+                for (int j = endColumnIndex; j >= startColumnIndex && totalElements > 0; j--)
+                {
+                    mat[endRowIndex][j] = val++;
+                    totalElements--;
+                }
+                endRowIndex--;
+
+                // bottom to top
+                for (int m = endRowIndex; m >= startRowIndex && totalElements > 0; m--)
+                {
+
+                    mat[m][startColumnIndex] = val++; ;
+                    totalElements--;
+                }
+                startColumnIndex++;
+            }
+            PrintMatrix(mat);
+        }
+
+        public static void PrintMatrix(List<List<int>> items)
+        {
+            int rows = items.Count;
+
+            for (int row = 0; row < rows; row++)
+            {
+                int columnsCount = items[row].Count;
+                for (int col = 0; col < columnsCount; col++)
+                {
+
+                    Console.Write(" " + String.Format("{0} \t", items[row][col]));
+
+
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}

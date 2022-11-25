@@ -1,0 +1,50 @@
+void Main()
+{
+	int[,] mat = new int[3, 3]
+	{
+	  {1, 2, 3 } ,
+	  {4, 5, 6 } ,
+	  {7, 8, 9}
+};
+
+
+	PrintLowerTriangle(mat);
+
+}
+
+
+public void PrintLowerTriangle(int[,] arr)
+{
+	var rowCount = arr.GetLength(0);
+	var colCount = arr.GetLength(1);
+	for (int row = 0; row < rowCount; row++)
+	{
+		for (int col = 0; col < colCount; col++)
+		{
+			if (row >= col)
+			{
+Console.Write(" " + String.Format("{0},{1} \t", row, col));
+			}
+			
+		}
+		Console.WriteLine();
+	}
+}
+
+public void PrintUpperTriangle(int[,] arr)
+{
+	var rowCount = arr.GetLength(0);
+	var colCount = arr.GetLength(1);
+	for (int row = 0; row < rowCount; row++)
+	{
+		for (int col = 0; col < colCount; col++)
+		{
+			if (row <= col)
+			{
+				Console.Write(" " + String.Format("{0},{1} \t", row, col));
+			}
+
+		}
+		Console.WriteLine();
+	}
+}

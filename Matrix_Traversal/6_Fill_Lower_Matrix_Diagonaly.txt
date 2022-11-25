@@ -1,0 +1,86 @@
+void Main()
+{
+	List<int> ls1 = new List<int> { 1, 0, 0, 0 };
+	List<int> ls2 = new List<int> { 0, 2, 0, 0 };
+	List<int> ls3 = new List<int> { 0, 0, 2, 0 };
+	List<int> ls4 = new List<int> { 0, 0, 0, 1 };
+
+	List<List<int>> mat = new List<List<int>>() { ls1, ls2, ls3, ls4 };
+	Fill_Lower_TriangleDiagonaly(mat);
+	PrintMatrix(mat);
+}
+
+public void Traverse_Lower_TriangleDiagonaly(List<List<int>> mat)
+{
+	if (mat != null)
+	{
+		int r = mat.Count;
+		int c = r;
+		if (r > 0)
+		{
+			for (int j_diagonalPointer = r - 2; j_diagonalPointer <= c && j_diagonalPointer >= 0; j_diagonalPointer--)
+			{
+				int i_Row = r - 1;
+				int j_Col = j_diagonalPointer;
+				for (; j_Col <= c && j_Col >= 0 && i_Row >= 0;)
+				{
+					int rightElement = mat[i_Row][j_Col + 1];
+					int upperElement = mat[i_Row - 1][j_Col];
+					//mat[i_Row][j_Col] = rightElement + upperElement;
+					Console.Write(" " + String.Format("{0} \t", mat[i_Row][j_Col]));
+					j_Col--;
+					i_Row--;
+				}
+			}
+
+		}
+	}
+}
+
+
+public void Fill_Lower_TriangleDiagonaly(List<List<int>> mat)
+{
+	if (mat != null)
+	{
+		int r = mat.Count;
+		int c = r;
+		if (r > 0)
+		{
+			for (int j_diagonalPointer = r - 2; j_diagonalPointer <= c && j_diagonalPointer >= 0; j_diagonalPointer--)
+			{
+				int i_Row = r - 1;
+				int j_Col = j_diagonalPointer;
+				for (; j_Col <= c && j_Col >= 0 && i_Row >= 0;)
+				{
+					int rightElement = mat[i_Row][j_Col + 1];
+					int upperElement = mat[i_Row - 1][j_Col];
+					mat[i_Row][j_Col] = rightElement + upperElement;
+
+					j_Col--;
+					i_Row--;
+				}
+			}
+
+		}
+	}
+}
+
+
+public void PrintMatrix(List<List<int>> items)
+{
+	int rows = items.Count;
+
+	for (int row = 0; row < rows; row++)
+	{
+		int columnsCount = items[row].Count;
+		for (int col = 0; col < columnsCount; col++)
+		{
+
+			Console.Write(" " + String.Format("{0} \t", items[row][col]));
+
+
+		}
+		Console.WriteLine();
+	}
+}
+
