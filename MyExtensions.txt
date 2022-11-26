@@ -1,5 +1,3 @@
-<Query Kind="Program" />
-
 //void Main()
 //{
 //	// Write code to test your extensions here. Press F5 to compile and run.
@@ -44,18 +42,39 @@
 //		}
 //	}
 //
-//	public static void PrintArrayWithIteration(this int[] _array, int iteration)
+//	public static void PrintArrayWithIteration(this int[] _array, int? _iterator_1, int? _iterator_2, string _iterator_1_Name = null, string _iterator_2_Name = null)
 //	{
 //		if (_array != null)
 //		{
-//
 //			string str = string.Empty;
 //			for (int i = 0; i < _array.Length; i++)
 //			{
 //				str = str + "  " + _array[i].ToString();
 //			}
-//			var st = $"{iteration}--> {str}";
-//			st.Dump();
+//
+//
+//			if (_iterator_1 == null && _iterator_2 == null)
+//			{
+//				var st = $" --> {str}";
+//				st.Dump();
+//			}
+//			if (_iterator_1 == null && _iterator_2 != null)
+//			{
+//				var st = $"{_iterator_2_Name}--> {_iterator_2} --> {str}";
+//				st.Dump();
+//			}
+//
+//			if (_iterator_1 != null && _iterator_2 == null)
+//			{
+//				var st = $"{_iterator_1_Name}--> {_iterator_1} --> {str}";
+//				st.Dump();
+//			}
+//
+//			if (_iterator_1 != null && _iterator_2 != null)
+//			{
+//				var st = $"{_iterator_1_Name}--> {_iterator_1} - and -  {_iterator_2_Name}--> {_iterator_2} --> {str}";
+//				st.Dump();
+//			}
 //		}
 //	}
 //
@@ -137,4 +156,52 @@
 //			(s1 + s2).Dump();
 //		}
 //	}
+//
+//	public static Tuple<string, TSource> GetNameAndValue<TSource>(Expression<Func<TSource>> sourceExpression)
+//	{
+//		Tuple<String, TSource> result = null;
+//		Type type = typeof(TSource);
+//		Func<MemberExpression, Tuple<String, TSource>> process = delegate (MemberExpression memberExpression)
+//																	{
+//																		ConstantExpression constantExpression = (ConstantExpression)memberExpression.Expression;
+//																		var name = memberExpression.Member.Name;
+//																		var value = ((FieldInfo)memberExpression.Member).GetValue(constantExpression.Value);
+//																		return new Tuple<string, TSource>(name, (TSource)value);
+//																	};
+//
+//		Expression exception = sourceExpression.Body;
+//		if (exception is MemberExpression)
+//		{
+//			result = process((MemberExpression)sourceExpression.Body);
+//		}
+//		else if (exception is UnaryExpression)
+//		{
+//			UnaryExpression unaryExpression = (UnaryExpression)sourceExpression.Body;
+//			result = process((MemberExpression)unaryExpression.Operand);
+//		}
+//		else
+//		{
+//			throw new Exception("Expression type unknown.");
+//		}
+//
+//		return result;
+//	}
 //}
+//
+//#region Advanced - How to multi-target
+//
+//// The NETx symbol is active when a query runs under .NET x or later.
+//
+//#if NET7
+//// Code that requires .NET 7 or later
+//#endif
+//
+//#if NET6
+//// Code that requires .NET 6 or later
+//#endif
+//
+//#if NET5
+//// Code that requires .NET 5 or later
+//#endif
+//
+//#endregion
