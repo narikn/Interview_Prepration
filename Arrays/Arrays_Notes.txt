@@ -1,0 +1,12 @@
+Finding point with out over flow
+---------------------------------
+     usual way is low+high/2  but this can cause overflow
+
+	int high = 10, low = 1;
+	int mid = low + (high - low) / 2;
+
+	int mid2 = high - (high - low) / 2;
+	mid.Dump();
+	mid2.Dump();
+
+-------------------------------
