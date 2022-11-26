@@ -2,7 +2,7 @@
 
 void Main()
 {
-
+;
 }
 
 //Head Recursion: 
@@ -15,6 +15,14 @@ public void Print_HeadRecursion(int n)
 	// All computation happens while recursiona activation records are created i.e while piling
 }
 
+
+public int Fact(int n)
+{
+
+  if(n==0) return 1;
+  
+   return n*Fact(n-1);
+}
 
 public int SumDigits(int n)
 {
