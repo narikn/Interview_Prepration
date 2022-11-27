@@ -1,17 +1,24 @@
 void Main()
 {
-// kiran
+	// kiran
 	// Write code to test your extensions here. Press F5 to compile and run.
 }
 
 public static class MyExtensions
 {
 	// Write custom extension methods here. They will be available to all queries.
-
+	
+	public static T P<T>(this T value)
+	{
+		Console.WriteLine(value.ToString());
+		return value;
+	}
 }
 
 public static class ArrayExtensions
 {
+
+
 
 	public static void Swap(this int[] a, int left, int right)
 	{
@@ -59,19 +66,19 @@ public static class ArrayExtensions
 				var st = $" --> {str}";
 				st.Dump();
 			}
-			if (_iterator_1 == null&&_iterator_2!=null)
+			if (_iterator_1 == null && _iterator_2 != null)
 			{
 				var st = $"{_iterator_2_Name}--> {_iterator_2} --> {str}";
 				st.Dump();
 			}
-			
-			if (_iterator_1 != null&&_iterator_2==null)
+
+			if (_iterator_1 != null && _iterator_2 == null)
 			{
 				var st = $"{_iterator_1_Name}--> {_iterator_1} --> {str}";
 				st.Dump();
 			}
 
-			if (_iterator_1 != null && _iterator_2 !=null)
+			if (_iterator_1 != null && _iterator_2 != null)
 			{
 				var st = $"{_iterator_1_Name}--> {_iterator_1} - and -  {_iterator_2_Name}--> {_iterator_2} --> {str}";
 				st.Dump();
