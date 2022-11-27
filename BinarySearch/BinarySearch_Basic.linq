@@ -2,9 +2,7 @@
 
 void Main()
 {
-
 	BinarySearchRecursion();
-
 }
 
 public void BinarySearch_Iterative()
