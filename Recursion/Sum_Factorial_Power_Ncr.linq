@@ -4,8 +4,7 @@
 
 void Main()
 {
-	naturalSum(3).Dump();
-	Fact(4).Dump();
+	foo(4, 2).Dump();
 }
 
 public int naturalSum(int n)
@@ -51,6 +50,16 @@ public int NCR_NonRecursive(int n, int r)
 public int Fact(int n)
 {
 	if (n == 0) return 1;
+
 	return n * Fact(n - 1);
 
 }
+
+public int NCR_Recursive(int n, int r)
+{
+	if (n == r) return 1;
+	if (r == 1) return n;
+
+	return NCR_Recursive(n - 1, r - 1) + NCR_Recursive(n - 1, r);
+}
+
