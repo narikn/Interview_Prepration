@@ -2,16 +2,16 @@
   <Output>DataGrids</Output>
 </Query>
 
-int[] F = new int[10];
+int[] F_Memo_Array = new int[10];
 void Main()
 {
 	//Fib_Iterative();
 	//rFib(10).Dump();
 
 
-	for (int i = 0; i < F.Length; i++)
+	for (int i = 0; i < F_Memo_Array.Length; i++)
 	{
-		F[i] = -1;
+		F_Memo_Array[i] = -1;
 	}
 	mFib(10).Dump();
 }
@@ -49,20 +49,20 @@ public int mFib(int n)
    // F is array 
 	if (n <= 1)
 	{
-		F[n] = n;
+		F_Memo_Array[n] = n;
 		return n;
 	}
 	else
 	{
-		if (F[n - 2] == -1)
+		if (F_Memo_Array[n - 2] == -1)
 		{
-			F[n - 2] = mFib(n - 2);
+			F_Memo_Array[n - 2] = mFib(n - 2);
 		}
 
-		if (F[n - 1] == -1)
+		if (F_Memo_Array[n - 1] == -1)
 		{
-			F[n - 1] = mFib(n - 1);
+			F_Memo_Array[n - 1] = mFib(n - 1);
 		}
-		return F[n - 1] + F[n - 2];
+		return F_Memo_Array[n - 1] + F_Memo_Array[n - 2];
 	}
 }

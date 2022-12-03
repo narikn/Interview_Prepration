@@ -5,34 +5,56 @@
 void Main()
 {
 
-FindMissingNumber_2();
+	FindMissingElementsWorking_1();
 }
 
 
 
 public void FindMissingElementsWorking()
 {
-	int[] a = { 10, 11, 13, 14, 16, 18 };
-	int sElement = a[0] - 0;
+	int[] a = { 10, 11, 15, 16, 18, 24 };
+	int startElement = a[0] - 0;
 	for (int i = 0; i < a.Length; i++)
 	{
-		if (a[i] - i != sElement)
+		int gap = a[i] - i;
+		if (gap != startElement)
 		{
-			int diff_2 = a[i] - i;
-			while (sElement < diff_2)
+			int diff_2 = gap;
+			while (startElement < diff_2)
 			{
-				int element = sElement + i;
-
-				sElement++;
+				int element = startElement + i;
+				element.Dump();
+				startElement++;
 			}
 		}
 	}
 }
 
+public void FindMissingElementsWorking_1()
+{
+	int[] a = { 10, 11, 15, 16, 18, 24 };
+	int startElement = a[0] - 0;
+	for (int i = 0; i < a.Length; i++)
+	{
+		int gap = a[i] - i;
+		if (gap != startElement)
+		{
+			int xx = gap - startElement; // magnitude
+			while (xx > 0)
+			{
+               (a[i]-xx).P();
+			   xx--;
+			}
+			startElement=gap;
+		}
+	}
+}
+
+
 public void FindMissingNumber_2()
 {
 	// using auxliary array
-	 
+
 	int[] a = { 4, 5, 6, 8, 10, 15 };
 	int[] h = new int[16];
 
