@@ -64,7 +64,6 @@ public void SumOfDigits()
 		sum = sum + r;
 		n = n / 10;
 	}
-
 }
 
 public void DecimalToBinary()
