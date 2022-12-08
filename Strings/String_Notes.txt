@@ -1,0 +1,10 @@
+
+Ascii for Letters
+--------------------
+A- 65 - a-97
+
+Z-90  z-122
+
+Numeric Difference between  Capital and small letter is 32  , that is small letter ascii  minus 32 gives capital letter ascii
+
+For example: 97(a) -32 = 65(A)
