@@ -4,7 +4,7 @@
 
 void Main()
 {
-	CheckStringPalindrome();
+	FindDupilcateChars();
 }
 
 
@@ -127,9 +127,34 @@ public void CheckStringPalindrome()
 		s++; e--;
 	}
 
-	if (isPalindrome==true)
+	if (isPalindrome == true)
 	{
 		"Palindrome".Dump();
+	}
+}
+
+public void FindDupilcateChars()
+{
+	string str = "findings";
+	Char[] c = str.ToCharArray();
+	int[] a = new int[26];
+
+	for (int i = 0; i <= c.Length - 1; i++)
+	{
+		// get ascii value of char and substract 97 - ascii value for small letters are a-97  to z-122 
+
+		int x = c[i] - 97;
+		a[x] = a[x] + 1;
+	}
+
+	for (int i = 0; i <= a.Length - 1; i++)
+	{
+		if (a[i] > 1)
+		{
+			int x = (i + 97);
+			Char d= (Char)x;
+          d.Dump();
+		}
 	}
 
 }
