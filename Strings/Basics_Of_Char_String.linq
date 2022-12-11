@@ -158,3 +158,29 @@ public void FindDupilcateChars()
 	}
 
 }
+
+public void DupilcateCharsInString()
+{
+
+	string str = "finding";
+	Char[] c = str.ToCharArray();
+
+	long hasBits = 0;  // this has array/hash
+	long x = 0;  // this is for masking( to check bit is on or off) ,  and also to set the bit=x
+
+	for (int i = 0; i < c.Length; i++)
+	{
+		x = 1;
+		int n = c[i] - 97; // get ascii of char and find the difference from a(97)
+		x = x << n; //   then  left shift the 1 as in x bits by n units
+		long result = x & hasBits; //  now check if it is on or off (masking)
+		if (result > 0)
+		{
+			c[i].Dump();
+		}
+		else
+		{
+			hasBits = hasBits | x; // then set the bit on i.e like incrementing by 1 
+		}
+	}
+}
