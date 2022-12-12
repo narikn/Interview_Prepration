@@ -184,3 +184,30 @@ public void DupilcateCharsInString()
 		}
 	}
 }
+
+
+public void CheckTwoStringsAnagram()
+{
+	string a = "medical";
+	string b = "decimal";
+
+	int[] c = new int[26];
+
+	for (int i = 0; i < a.Length; i++)
+	{
+		int x = a[i] - 97;
+		c[x] = c[x] + 1;
+	}
+
+	for (int i = 0; i < b.Length; i++)
+	{
+		int x = b[i] - 97;
+		c[x] = c[x] - 1;
+
+		if (c[x] < 0)
+		{
+			"Not a Anagram".Dump();
+			break;
+		}
+	}
+}
