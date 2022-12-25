@@ -4,11 +4,11 @@
 
 void Main()
 {
-	//Calculate.e(1, 10).Dump();
-	double d = E(1, 10);
-	d.Dump();
-	PowerClass.Power(1, 10).P();
-	//E_Recursion(1, 10).Dump();
+	////Calculate.e(1, 10).Dump();
+	//double d = E(1, 10);
+	//d.Dump();
+	//PowerClass.Power(1, 10).P();
+E_Recursion(1, 10).Dump();
 
 }
 

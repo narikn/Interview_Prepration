@@ -4,7 +4,7 @@
 
 void Main()
 {
-	foo(4, 2).Dump();
+	NCR_Recursive(4, 2).Dump();
 }
 
 public int naturalSum(int n)

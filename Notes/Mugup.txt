@@ -1,7 +1,10 @@
 
 
+Recursion
+-------------------
  1) Power(x,n)
- 2) Tower Of Hanoi
- 3) String Permutation
- 4) Number Permutation
+ 2) Taylor Series
+ 3) Tower Of Hanoi
+ 4) String Permutation
+ 5) Number Permutation
  
