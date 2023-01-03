@@ -4,8 +4,8 @@
 
 void Main()
 {
-	int[] a = { 1, 2, 2, 2, 3, 3, 4 };
-
+	//int[] a = { 1, 2, 2, 2, 3, 3, 4 };
+int[] a={1,1,2};
 	int i = 0;
 	int j = 1;
 
@@ -57,6 +57,7 @@ public void RemoveDups()
 	}
 	a.Dump();
 }
+
 public void RemoveDuplicates_2()
 {
 	int[] a = { 1, 1, 1, 2, 2, 4, 5 };
