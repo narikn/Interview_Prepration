@@ -8,6 +8,51 @@ CountDuplicates_Sorted();
 	//FindDuplicates_UnSorted();
 }
 
+public void FindDuplicates_Sorted()
+{
+
+	// Time Complxity is order of n even though we have while loop ( which is for small set)
+	int[] a = { 1, 1, 1, 1, 2, 3, 4, 4, 5, 6, 7, 7, 5, 5 };
+
+	int lastDuplicate = 0;
+	for (int i = 0; i < a.Length - 1; i++)
+	{
+		if (a[i] == a[i + 1])
+		{
+			if (lastDuplicate != a[i]) // if last element is same dont print it
+			{
+				a[i].Dump();
+				lastDuplicate = a[i];
+			}
+		}
+	}
+}
+
+public static void CountDuplicates_Sorted()
+{
+	int[] a = { 1, 2, 3, 4 };
+
+	int j = 0;
+
+	for (int i = 0; i < a.Length - 1; i++)
+	{
+		if (a[i] == a[i + 1])
+		{
+			j = i + 1;
+			while (j < a.Length && a[i] == a[j]) // Moved j < a.Length to the beginning to prevent index out-of-bounds
+			{
+				j++;
+			}
+
+			Console.WriteLine("count--" + a[i].ToString() + "---" + (j - i)); // Using Console.WriteLine for printing
+
+			i = j - 1; // i should move before to j, because j will be pointing to the last item in the set of duplicates
+		}
+	}
+
+
+}
+
 public void FindDuplicates_UnSorted()
 {
 
@@ -59,47 +104,3 @@ public void FindDuplicates_UnSorted_2()
 	}
 }
 
-public void FindDuplicates_Sorted()
-{
-
-	// Time Complxity is order of n even though we have while loop ( which is for small set)
-	int[] a = { 1, 1, 1, 1, 2, 3, 4, 4, 5, 6, 7, 7, 5, 5 };
-
-	int lastDuplicate = 0;
-	for (int i = 0; i < a.Length - 1; i++)
-	{
-		if (a[i] == a[i + 1])
-		{
-			if (lastDuplicate != a[i]) // if last element is same dont print it
-			{
-				a[i].Dump();
-				lastDuplicate = a[i];
-			}
-		}
-	}
-}
-
-public static void CountDuplicates_Sorted()
-{
-	int[] a = { 1, 2, 3, 4 };
-
-	int j = 0;
-
-	for (int i = 0; i < a.Length - 1; i++)
-	{
-		if (a[i] == a[i + 1])
-		{
-			j = i + 1;
-			while (j < a.Length && a[i] == a[j]) // Moved j < a.Length to the beginning to prevent index out-of-bounds
-			{
-				j++;
-			}
-
-			Console.WriteLine("count--" + a[i].ToString() + "---" + (j - i)); // Using Console.WriteLine for printing
-
-			i = j - 1; // i should move before to j, because j will be pointing to the last item in the set of duplicates
-		}
-	}
-	
-	
-}
