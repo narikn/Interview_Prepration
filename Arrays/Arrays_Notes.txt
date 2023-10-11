@@ -11,45 +11,57 @@ Finding point with out over flow
 
 -------------------------------
 
-
-
-Findind Duplicates
+**Finding Duplicates**
 ------------------------
-=> For sorted arrays
 
-1. **Traversing**: Begin by traversing through the array with a single loop. Typically, you'll be using a loop counter, say `i`, to navigate from the start to the end of the array.
+
+### 1. Print duplicates in a sorted array. O(n)
+-------------------
+1. **Initialization**: 
+   - Initialize a variable, `lastDuplicate`, to keep track of the most recent duplicate identified. This ensures we don't print duplicates multiple times.
+
+2. **Traversing**: 
+   - Traverse through the array using a single loop with a counter, `i`.
+
+3. **Identifying Duplicates**: 
+   - If the current number (at position `i`) is the same as the next number (at position `i+1`) and this duplicate is different from `lastDuplicate`, then it's a new duplicate.
+   - Print this duplicate and update `lastDuplicate`.
+
+### 2. Print duplicates in an unsorted array. O(n2)
+------------------
+1. **Traversing with Two Loops**: 
+   - Use an outer loop with counter `i` to pick numbers from the array.
+   - For each picked number, use an inner loop with counter `j` (starting from `i+1`) to traverse the rest of the array.
 
 2. **Identifying Duplicates**: 
-   - While iterating, check if the current number (at position `i`) is the same as the next number (at position `i+1`). 
-   - If they're the same, it's a potential duplicate. You continue checking adjacent values as long as they remain the same.
+   - Inside the inner loop, if the number at position `i` (from the outer loop) matches the number at position `j` (from the inner loop), it's a duplicate. Print it.
+
+### 3. Display duplicated elements and their counts in a sorted array.O(n)
+---------------------
+1. **Initialization**: 
+   - Initialize `lastDuplicate` to track the most recent duplicate.
+   - Initialize a counter `count` to 1.
+
+2. **Traversing**: 
+   - Traverse the array using a loop counter, `i`.
 
 3. **Counting Duplicates**:
-   - Maintain a counter variable, say `count`, initialized to 1 (because every number appears at least once).
-   - As you continue finding the same adjacent numbers (duplicates), keep incrementing the counter.
-   - As soon as you encounter a different number (or reach the end of the array), check the value of `count`. If it's greater than 1, you print the current number (at position `i`) and its count. Then reset the counter to 1.
+   - If the current number is the same as the next, increment `count`.
+   - If the current number differs from the next or it's the array's end, and `count` is more than 1, print the number and its count. Then, reset `count` to 1.
 
----
+### 4. Display duplicated elements and their counts in an unsorted array. O(n2)
+--------------------
+1. **Traversing with Two Loops**: 
+   - Use an outer loop (`i`) to pick numbers.
+   - For each number, traverse the rest of the array using an inner loop (`j`).
 
-=> For unsorted arrays
+2. **Identifying & Counting Duplicates**: 
+   - Initialize a counter `count` to 1.
+   - Inside the inner loop, if numbers at positions `i` and `j` match, increment `count`.
+   - After the inner loop finishes for a number, if `count` is more than 1, print the number and its count.
 
-1. **Traversing using Two Loops**:
-   - Begin by initializing an outer loop. This loop, using a counter like `i`, picks a number from the array.
-   - Then, for each picked number, use an inner loop (with a counter, say `j`, starting from `i+1`) to traverse the rest of the array looking for duplicates of the picked number.
+3. **Avoiding Recounts**:
+   - To avoid counting a number's duplicates multiple times, mark counted numbers.
+   - Either modify the original array with a sentinel value like `-1` or use an auxiliary array to keep track of counted positions.
 
-2. **Identifying Duplicates**:
-   - Inside the inner loop, compare the current number from the outer loop (position `i`) with the numbers encountered in the inner loop (position `j`).
-   - If they're the same, it means you've found a duplicate.
-
-3. **Counting Duplicates**:
-   - Similar to the sorted approach, maintain a counter variable, initialized to 1.
-   - Every time you find a duplicate in the inner loop, increment this counter.
-   - Once the inner loop finishes (you've checked the entire array for duplicates of the current number), if `count` is greater than 1, print the number and its count.
-
-4. **Avoiding Recounts**:
-   - One challenge in the unsorted approach is that you might count duplicates of the same number multiple times as the outer loop progresses. 
-   - To avoid this, after counting a number's duplicates, mark it. This marking indicates that this number's duplicates have already been counted, so you shouldn't count them again.
-   - There are two main ways to mark:
-     1. **Modify the Original Array**: After counting duplicates for a number, set its value to a sentinel (like `-1`). This way, in future iterations, if you encounter `-1`, you know to skip it.
-     2. **Use a Helper Array**: Instead of modifying the original array, you can use an auxiliary array (of the same size) to mark which positions have been counted. This way, the original array remains unchanged.
-
-By internalizing these traversing patterns and the logic behind identifying and counting duplicates, you'll find it easier to tackle such problems in the future.
+I hope this streamlined version is easier to remember and teach!
