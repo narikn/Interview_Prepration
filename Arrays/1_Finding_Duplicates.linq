@@ -4,8 +4,8 @@
 
 void Main()
 {
-
-	FindDuplicates_UnSorted();
+CountDuplicates_Sorted();
+	//FindDuplicates_UnSorted();
 }
 
 public void FindDuplicates_UnSorted()
@@ -31,6 +31,34 @@ public void FindDuplicates_UnSorted()
 	}
 }
 
+public void FindDuplicates_UnSorted_2()
+{
+	int[] a = new int[] { 2, 3, 1, 3, 2, 4, 1, 3 };
+
+	int[] m = new int[a.Length]; // extra array :easy to understand, this will not modify same array
+
+	for (int i = 0; i < a.Length; i++)
+	{
+		if (m[i] == -1) continue;
+
+		int count = 1;
+
+		for (int j = i + 1; j < a.Length; j++)
+		{
+			if (a[i] == a[j])
+			{
+				count++;
+				m[j] = -1;
+			}
+		}
+
+		if (count > 1)
+		{
+			Console.WriteLine($"{a[i]} -- {count} times");
+		}
+	}
+}
+
 public void FindDuplicates_Sorted()
 {
 
@@ -51,9 +79,9 @@ public void FindDuplicates_Sorted()
 	}
 }
 
-public void CountDuplicates_Sorted()
+public static void CountDuplicates_Sorted()
 {
-	int[] a = { 1, 2, 4, 4 };
+	int[] a = { 1, 2, 3, 4 };
 
 	int j = 0;
 
@@ -62,13 +90,16 @@ public void CountDuplicates_Sorted()
 		if (a[i] == a[i + 1])
 		{
 			j = i + 1;
-			while (a[i] == a[j] && j < a.Length) // j may cross the length of array so it should be taken care.
+			while (j < a.Length && a[i] == a[j]) // Moved j < a.Length to the beginning to prevent index out-of-bounds
 			{
 				j++;
 			}
-			 ("count--" + a[i].ToString() + "---" + (j - i)).Dump();  // j-i gives the count of dupilicates which are starting for i and ending at j
 
-			i = j - 1; // i should move before to j, bcoz j will pointing the last item in set of duplicates
+			Console.WriteLine("count--" + a[i].ToString() + "---" + (j - i)); // Using Console.WriteLine for printing
+
+			i = j - 1; // i should move before to j, because j will be pointing to the last item in the set of duplicates
 		}
 	}
+	
+	
 }
