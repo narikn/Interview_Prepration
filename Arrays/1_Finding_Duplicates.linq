@@ -50,7 +50,6 @@ public static void CountDuplicates_Sorted()
 		}
 	}
 
-
 }
 
 public void FindDuplicates_UnSorted()
