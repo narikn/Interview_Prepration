@@ -28,7 +28,7 @@ public void FindDuplicates_Sorted()
 	}
 }
 
-public static void CountDuplicates_Sorted()
+public  void CountDuplicates_Sorted()
 {
 	int[] a = { 1, 2, 3, 4 };
 

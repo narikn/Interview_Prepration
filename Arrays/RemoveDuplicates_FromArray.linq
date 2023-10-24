@@ -4,76 +4,60 @@
 
 void Main()
 {
-	int[] a = { 1, 2, 2, 2, 3, 3, 4 };
+	int[] a = { 1, 2, 3, 3, 3, 4, 5 };
+	RemoveDuplicates(a);
 
-	int i = 0;
+}
+public void RemoveDuplicates(int[] a)
+{
+
 	int j = 1;
 
-	while (j < a.Length)
+	for (int i = 0; i < a.Length - 1; i++)
 	{
-		if (a[i] == a[j])
+		if (a[i] != a[i + 1])
 		{
+			a[j] = a[i + 1];
 			j++;
-		}
-		else
-		{
-			ShiftLeft(a, i + 1, j);
-			i++;
-			j++;
-
 		}
 	}
-	a.PrintArray();
+	//	a.PrintArrayTillIndex(j);
 }
 
-public void ShiftLeft(int[] a, int i, int j)
+
+
+public void RemoveDuplicates2(int[] a)
 {
 
-	int x = a[i];
-	int y = a[j];
+	int j = 0;
 
-	a[i] = a[j];
+	for (int i = 0; i < a.Length - 1; i++)
+	{
+		if (a[i] != a[i + 1])
+		{
+			a[j] = a[i];
+			j++;
+		}
+	}
+	a[j++] = a[a.Length - 1];
+	a.PrintArrayTillIndex(j);
 }
 
-public void RemoveDups()
-{ //  very good logic
 
-	int[] a = { 1, 1, 1, 2, 2, 3, 3, 4 };
+public void RemoveDuplicates_1(int[] a)
+{
+	int[] ax = new int[a.Length];
 
-	int idx = 1;
-
+	ax[0] = a[0];
+	int j = 0;
 	for (int i = 1; i < a.Length; i++)
 	{
-		if (a[i] == a[idx - 1])
+		if (a[i] != ax[j]) 
 		{
-
-		}
-		else
-		{
-			a[idx] = a[i];
-			idx++;
-		}
-
-	}
-	a.Dump();
-}
-public void RemoveDuplicates_2()
-{
-	int[] a = { 1, 1, 1, 2, 2, 4, 5 };
-
-	int i = 0;
-
-	for (int j = 1; j < a.Length; j++)
-	{
-		if (a[i] == a[j])
-		{
-		}
-		else
-		{
-			a[i + 1] = a[j];
-			i++;
+			a[j]=a[i+1];
+			j++;
+			
 		}
 	}
-	//i.Dump();
-	a.Dump();
+
 }
