@@ -7,18 +7,36 @@ void Main()
 public static class MyExtensions
 {
 	// Write custom extension methods here. They will be available to all queries.
-	
+
 	public static T P<T>(this T value)
 	{
 		Console.WriteLine(value.ToString());
 		return value;
 	}
+
+	public static void MoveToTop<T>(this List<T> list, int index)
+	{
+		T item = list[index];
+		for (int i = index; i > 0; i--)
+			list[i] = list[i - 1];
+		list[0] = item;
+	}
+
+
+
+	public static void MoveToLast<T>(this List<T> list, int index)
+	{
+		T item = list[index];
+		for (int i = 0; i < list.Count - 1; i++)
+		{
+			list[i] = list[i + 1];
+		}
+		list[list.Count - 1] = item;
+	}
 }
 
 public static class ArrayExtensions
 {
-
-
 
 	public static void Swap(this int[] a, int left, int right)
 	{
@@ -38,6 +56,38 @@ public static class ArrayExtensions
 	}
 
 	public static void PrintArray(this int[] _array)
+	{
+		if (_array != null)
+		{
+			string str = string.Empty;
+			for (int i = 0; i < _array.Length; i++)
+			{
+				str = str + "  " + _array[i].ToString();
+			}
+			str.Dump();
+		}
+	}
+
+
+	public static void PrintArrayTillIndex(this int[] _array,  int? _lastIndex=null)
+	{
+		if (_array != null)
+		{
+			int tillArrayIndex=_array.Length;
+			if (_lastIndex.HasValue)
+			{
+				tillArrayIndex=_lastIndex.Value;
+			}
+			string str = string.Empty;
+			for (int i = 0; i < tillArrayIndex; i++)
+			{
+				str = str + "  " + _array[i].ToString();
+			}
+			str.Dump();
+		}
+	}
+
+	public static void PrintArray(this Char[] _array)
 	{
 		if (_array != null)
 		{
