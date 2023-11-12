@@ -139,7 +139,7 @@ class LinkedList
 			n = c.next; // copy the 2nd nodes address to temporary variable n ( known as next)
 			c.next = p; // make current node point to previous node ( 1st time it points to null)
 
-			// by this we are breaking link between a and b ( first two nodes)   and then reverse the link direction by swaping address
+			// by  above two steps we are breaking link between a and b ( first two nodes)   and then reverse the link direction by swaping address
 
 			// swap address 
 			p = c;

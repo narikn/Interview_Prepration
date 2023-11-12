@@ -162,7 +162,7 @@ public void Difference(int[] a, int[] b)
 		}
 		else if (a[j] > b[i])
 		{
-			j++;
+			j++; // we dont element from b
 		}
 		else
 		{

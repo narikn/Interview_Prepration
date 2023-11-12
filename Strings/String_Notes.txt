@@ -1,9 +1,11 @@
 
 Ascii for Letters
 --------------------
-A- 65 - a-97
+small letters : a-97 to z-122
+Capital letters : A-65 to  Z-90
 
-Z-90  z-122
+97 (for 'a') - 65 (for 'A') = 32
+small letter ascii  - caps ascii is 32
 
 Numeric Difference between  Capital and small letter is 32  , that is small letter ascii  minus 32 gives capital letter ascii
 
