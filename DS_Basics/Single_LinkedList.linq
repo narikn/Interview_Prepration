@@ -2,67 +2,36 @@
   <Output>DataGrids</Output>
 </Query>
 
-class Implementation
+
+ void Main(string[] args)
 {
-	static void Main(string[] args)
-	{
-		//create an empty LinkedList
-		LinkedList list = new LinkedList();
+	//create an empty LinkedList
+	LinkedList s = new LinkedList();
 
-		//Add first node.
-		Node first = new Node();
-		first.data = 10;
-		first.next = null;
-		//linking with head node
-		list.head = first;
+	s.AddAtStart(1);
+	s.AddAtEnd(2);
+	s.AddAtEnd(2);
+	s.AddAtEnd(3);
+	s.AddAtEnd(3);
+	s.AddAtEnd(4);
+	s.DeleteDuplicates();
+	s.PrintRecursively();
 
-		//Add second node.
-		Node second = new Node();
-		second.data = 20;
-		second.next = null;
-		//linking with first node
-		first.next = second;
-
-		//Add third node.
-		Node third = new Node();
-		third.data = 30;
-		third.next = null;
-		//linking with second node
-		second.next = third;
-
-		//print the content of list
-		//list.PrintList();
-		list.AddAtEnd(new Node() { data = 40 });
-		list.AddAtEnd(new Node() { data = 50 });
-
-		Node sixty = new Node() { data = 60 };
-		list.AddAtEnd(sixty);
-
-		// creating loop 	
-		{
-			//sixty.next = first;
-			sixty.next = third;
-		}
-
-
-		//list.DeleteNode(30);
-		//list.PrintList();
-		//list.Reverse();
-		//list.PrintList();
-		//list.MiddleNode();
-	 Node s=	list.HasCycle();
-		list.RemoveLoop(s);
-		list.PrintList();
-
-	}
 }
-
 
 
 class Node
 {
-	public int data;
-	public Node next;
+	public int Data;
+	public Node Next;
+	public Node(int _data)
+	{
+		this.Data = _data;
+	}
+	public Node()
+	{
+
+	}
 };
 
 class LinkedList
@@ -84,8 +53,8 @@ class LinkedList
 			Console.Write("The list contains: ");
 			while (temp != null)
 			{
-				Console.Write(temp.data + " ");
-				temp = temp.next;
+				Console.Write(temp.Data + " ");
+				temp = temp.Next;
 			}
 			Console.WriteLine();
 		}
@@ -101,31 +70,61 @@ class LinkedList
 		{
 			Node o = this.head;
 			this.head = n;
-			n.next = o;
+			n.Next = o;
 		}
+	}
+
+	public void AddAtStart(int x)
+	{
+		if (this.head != null)
+		{
+			Node n = new Node(x);
+			Node t = this.head;
+			n.Next = t;
+			this.head = n;
+		}
+		else
+		{
+			this.head = new Node(x);
+		}
+
+	}
+
+	public void AddAtEnd(int x)
+	{
+		if (this.head == null) return;
+
+		Node p = this.head;
+		while (p.Next != null)
+		{
+			p = p.Next;
+
+		}
+
+		p.Next = new Node(x);
 	}
 
 	public void AddAtEnd(Node n)
 	{
 		Node temp = this.head;
-		while (temp.next != null)
+		while (temp.Next != null)
 		{
-			temp = temp.next;
+			temp = temp.Next;
 		}
-		temp.next = n;
+		temp.Next = n;
 	}
 
 	public void DeleteNode(int data)
 	{
 		Node t = this.head;
 		Node prev = t;
-		while (t.data != data)
+		while (t.Data != data)
 		{
 			prev = t;
-			t = t.next;
+			t = t.Next;
 		}
 
-		prev.next = t.next;
+		prev.Next = t.Next;
 	}
 
 	public void Reverse()
@@ -136,8 +135,8 @@ class LinkedList
 		Node n = null;
 		while (c != null)
 		{
-			n = c.next; // copy the 2nd nodes address to temporary variable n ( known as next)
-			c.next = p; // make current node point to previous node ( 1st time it points to null)
+			n = c.Next; // copy the 2nd nodes address to temporary variable n ( known as next)
+			c.Next = p; // make current node point to previous node ( 1st time it points to null)
 
 			// by  above two steps we are breaking link between a and b ( first two nodes)   and then reverse the link direction by swaping address
 
@@ -153,12 +152,12 @@ class LinkedList
 		Node s = this.head;
 		Node f = this.head;
 
-		while (f != null && f.next != null)
+		while (f != null && f.Next != null)
 		{
-			s = s.next;
-			f = f.next.next;
+			s = s.Next;
+			f = f.Next.Next;
 		}
-		$"Middle node is: {s.data}".Dump();
+		$"Middle node is: {s.Data}".Dump();
 	}
 
 	public Node HasCycle()
@@ -166,10 +165,10 @@ class LinkedList
 		Node s = this.head;
 		Node f = this.head;
 		Node h = null;
-		while (f != null && f.next != null)
+		while (f != null && f.Next != null)
 		{
-			s = s.next;
-			f = f.next.next;
+			s = s.Next;
+			f = f.Next.Next;
 			if (s == f)
 			{
 				h = PrintStartingNode(s);
@@ -186,17 +185,62 @@ class LinkedList
 
 		while (slowPointer != t)
 		{
-			t = t.next;
-			slowPointer = slowPointer.next;
+			t = t.Next;
+			slowPointer = slowPointer.Next;
 		}
 
-		$"Cycle starts at node {t.data}".Dump();
+		$"Cycle starts at node {t.Data}".Dump();
 		return slowPointer;
 	}
 
 	public void RemoveLoop(Node slowPointer)
 	{
-	
-		slowPointer.next=null;;
+
+		slowPointer.Next = null; ;
 	}
+
+	public void DeleteDuplicates()
+	{
+		Node p = this.head;
+		Node q = this.head.Next;
+
+
+		while (q.Next != null)
+		{
+			if (p.Data == q.Data)
+			{
+				p.Next = q.Next;
+				q = p.Next;
+
+			}
+			else
+			{
+				p = q;
+				q = q.Next;
+
+			}
+
+		}
+	}
+
+	public void PrintRecursively()
+	{
+		"".PrintNewLine();
+		DisplayRecursively(this.head);
+	}
+
+	private void DisplayRecursively(Node n)
+	{
+		Node p = n;
+		if (p != null)
+		{
+			$"{p.Data}-->".PrintInLine();
+			DisplayRecursively(p.Next);
+
+
+		}
+	}
+
+
+
 };
