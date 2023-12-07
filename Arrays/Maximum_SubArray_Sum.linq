@@ -30,7 +30,7 @@ void Main()
 public static int maxSubArraySum(int[] a)
 {
 
-	int maxSoFar = int.MinValue,
+	int maxSoFar = int.MinValue;
 	int currentSum = 0;
 
 	for (int i = 0; i < a.Length; i++)
