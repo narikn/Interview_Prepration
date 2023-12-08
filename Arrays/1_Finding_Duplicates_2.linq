@@ -86,11 +86,11 @@ void Main()
  void PrintDuplicates_WithCount_UnSortedArray(int[] arr)
 {
 	int n = arr.Length;
-	bool[] counted = new bool[n]; // auxiliary array to keep track of counted numbers
+	bool[] marker = new bool[n]; // auxiliary array to keep track of counted numbers
 
 	for (int i = 0; i < n; i++)
 	{
-		if (counted[i]) continue; // Skip the number if it's already counted
+		if (marker[i]) continue; // Skip the number if it's already counted
 
 		int count = 1; // initialize count for every number
 		for (int j = i + 1; j < n; j++)
@@ -98,7 +98,7 @@ void Main()
 			if (arr[i] == arr[j])
 			{
 				count++;
-				counted[j] = true; // mark this number as counted
+				marker[j] = true; // mark this number as counted
 			}
 		}
 
@@ -146,7 +146,28 @@ void Main()
 	}
 }
 
- void PrintUniqueNumbers_UnSortedArray(int[] arr)
+void PrintUniqueElements(int[] a)
+{
+	if (a.Length == 0)
+	{
+		return; // Empty array, nothing to print
+	}
+
+	
+	Console.WriteLine(a[0]); // Print the first element (always unique)
+
+	// Iterate through the array starting from index 1
+	for (int i = 1; i < a.Length; i++)
+	{
+		// If the current element is different from the previous one, print it
+		if (a[i] != a[i - 1])
+		{
+			Console.WriteLine(a[i]);
+		}
+	}
+}
+
+void PrintUniqueNumbers_UnSortedArray(int[] arr)
 {
 	int n = arr.Length;
 

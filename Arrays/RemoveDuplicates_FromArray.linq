@@ -5,59 +5,32 @@
 void Main()
 {
 	int[] a = { 1, 2, 3, 3, 3, 4, 5 };
-	RemoveDuplicates(a);
+	RemoveDuplicatesFromSortedArray(a);
 
 }
-public void RemoveDuplicates(int[] a)
+
+
+public void RemoveDuplicatesFromSortedArray(int[] a)
 {
-
-	int j = 1;
-
-	for (int i = 0; i < a.Length - 1; i++)
+	if (a.Length <= 1)
 	{
-		if (a[i] != a[i + 1])
-		{
-			a[j] = a[i + 1];
-			j++;
-		}
+
+		return;
 	}
-	//	a.PrintArrayTillIndex(j);
-}
 
-
-
-public void RemoveDuplicates2(int[] a)
-{
 
 	int j = 0;
 
-	for (int i = 0; i < a.Length - 1; i++)
-	{
-		if (a[i] != a[i + 1])
-		{
-			a[j] = a[i];
-			j++;
-		}
-	}
-	a[j++] = a[a.Length - 1];
-	a.PrintArrayTillIndex(j);
-}
-
-
-public void RemoveDuplicates_1(int[] a)
-{
-	int[] ax = new int[a.Length];
-
-	ax[0] = a[0];
-	int j = 0;
+	// Loop through the original sorted array to find and store unique elements
 	for (int i = 1; i < a.Length; i++)
 	{
-		if (a[i] != ax[j]) 
+		// If the current element is not equal to the previous unique element
+		if (a[i] != a[j])
 		{
-			a[j]=a[i+1];
-			j++;
-			
+			j++; // Move to the next position in the temporary array
+			a[j] = a[i]; // Store the current unique element at the next position
 		}
 	}
 
+	a.PrintArrayTillIndex(j + 1);
 }
