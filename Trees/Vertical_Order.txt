@@ -1,0 +1,78 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        TreeNode root = new TreeNode(1);
+        root.Left = new TreeNode(2);
+        root.Right = new TreeNode(3);
+        root.Left.Left = new TreeNode(4);
+        root.Left.Right = new TreeNode(5);
+        root.Right.Left = new TreeNode(6);
+        root.Right.Right = new TreeNode(7);
+
+        Tree tree = new Tree(root);
+
+        Dictionary<int, List<TreeNode>> result = tree.VerticalOrderTraversal();
+
+        foreach (var kvp in result)
+        {
+            foreach (var node in kvp.Value)
+            {
+                Console.Write(node.Value + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
+
+public class Tree
+{
+    public TreeNode Root { get; set; }
+
+    public Tree(TreeNode root)
+    {
+        Root = root;
+    }
+
+    public Dictionary<int, List<TreeNode>> VerticalOrderTraversal()
+    {
+        Dictionary<int, List<TreeNode>> result = new Dictionary<int, List<TreeNode>>();
+        VerticalOrder(Root, 0, result);
+        return result;
+    }
+
+    private void VerticalOrder(TreeNode node, int distance, Dictionary<int, List<TreeNode>> map)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        if (!map.ContainsKey(distance))
+        {
+            map.Add(distance, new List<TreeNode>());
+        }
+
+        map[distance].Add(node);
+
+        VerticalOrder(node.Left, distance - 1, map);
+        VerticalOrder(node.Right, distance + 1, map);
+    }
+}
+
+public class TreeNode
+{
+    public int Value { get; set; }
+    public TreeNode Left { get; set; }
+    public TreeNode Right { get; set; }
+
+    public TreeNode(int value)
+    {
+        Value = value;
+        Left = null;
+        Right = null;
+    }
+}
