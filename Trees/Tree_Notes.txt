@@ -27,3 +27,12 @@ Tree Traverse
 
 
 https://www.hongkiat.com/blog/synchronous-asynchronous-javascript/
+
+// in order LDR  -- Root will be in center
+
+// pre order  DLR --- DFS
+
+// post RLD  --
+
+// Level order - BFS
+>>>>>>> Stashed changes
