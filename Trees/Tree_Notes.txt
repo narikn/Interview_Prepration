@@ -1,10 +1,29 @@
 Tree Traverse
 -----------------
 
-// in order LDR
 
-// pre order  DLR
+ PreOrder DLR -- Out put is sorted for BST -  Non BST root will be first node
+ 
 
-// post LRD
+ In order LDR  -- root node will be at the center of output 
+ 
+ Post Order LRD
 
-// Level order
+ Level order -BFS
+
+
+
+(1) PreOrder  (DLR)	BST:Not Sorted	 Root Node:Location: First Node
+(2) InOrder   (LDR)	BST:Sorted	     Root Node Location: Middle Node
+(3) PostOrder (LRD)	BST:Not Sorted	 Root Node Location: Laste Node
+
+  ** Above 3 tree traversal are depth first search traversal
+  
+(4) Level order  is Breadth first search traversal  
+
+
+
+
+
+
+https://www.hongkiat.com/blog/synchronous-asynchronous-javascript/
