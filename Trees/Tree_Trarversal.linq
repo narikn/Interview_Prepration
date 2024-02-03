@@ -31,7 +31,7 @@ public void PreOrder(TreeNode root)
 }
 
 
-public void PreorderTraversal(TreeNode _root)
+public void PreOrder_Iterative(TreeNode _root)
 {
 
 	if (_root != null)
@@ -64,10 +64,7 @@ public void InOrder(TreeNode root)
 	}
 }
 
-
-
-
-public void InorderTraversal(TreeNode _root)
+public void InOrder_Iterative(TreeNode _root)
 {
 	 // LDR
 	 
@@ -95,33 +92,6 @@ public void InorderTraversal(TreeNode _root)
 }
 
 
-public void PostorderTraversal(TreeNode _root)
-{
-	// LRD
-
-	if (_root == null) return;
-
-	Stack<TreeNode> stack = new Stack<TreeNode>();
-	TreeNode current = _root;
-
-	while (current != null || stack.Count > 0)
-	{
-		// Traverse to the leftmost node
-		while (current != null)
-		{
-			stack.Push(current);
-			current = current.Left;
-		}
-
-		// Current is null at this point
-		current = stack.Pop();
-		Console.WriteLine(current.Data);  // Use Console.WriteLine to print the data
-
-		// Now, visit the right subtree
-		current = current.Right;
-	}
-}
-
 
 public void PostOrder(TreeNode root)
 {
@@ -134,7 +104,7 @@ public void PostOrder(TreeNode root)
 }
 
 
-public void PostorderTraversal_IT(TreeNode  root)
+public void PostOrder_Iterative(TreeNode  root)
 {
 	if (root == null) return;
 
