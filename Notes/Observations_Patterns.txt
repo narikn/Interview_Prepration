@@ -1,0 +1,2 @@
+
+1) Must rememeber how to delete duplicate from  sorted array its  a pattern
