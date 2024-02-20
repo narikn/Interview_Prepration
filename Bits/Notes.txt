@@ -43,3 +43,36 @@ Certainly! Here are some observations about the behavior of the XOR operation wi
     - In data transmission, XOR can be used to detect errors by XORing all bytes received; if the result is not zero, there was an error.
 
 These properties of the XOR operation are widely used in fields like cryptography, error detection and correction algorithms, and more, due to its invertible nature and its ability to mix bits in a non-destructive manner.
+
+Bitwise Left shit
+---------------
+x << 1   => x*2 Power 1
+x<< 2 => x* 2 Power 2
+
+(a) Set the the Kth bit X to 1 =>  X| (1<<k)
+lets say we have 1 in binary has 001
+001<<1 => 010 => 1 moved 1 position left
+
+001<<2=> 100 => 1 moved 2 positions left
+
+(b) Clear the the Kth bit X to 1 =>  X & ~(1<<k)
+
+(c) Flip the Kth bit of X =>  X ^ (1<<k)
+
+** how to create a mask of 1s' for 6 bits => 111 111 ( create all 6 1's) 
+to do this 
+ Step 1)  x= 1<< 6 
+ Step 2) masl=x-1
+ 
+
+
+
+
+Bitwise right shit
+---------------
+x << 1   => x/2 Power 1
+x<< 2 => x / 2 Power 2
+
+
+
+
