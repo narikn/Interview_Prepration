@@ -51,7 +51,6 @@ public  void CountDuplicates_Sorted()
 	}
 
 }
-
 public void FindDuplicates_UnSorted()
 {
 
@@ -74,6 +73,7 @@ public void FindDuplicates_UnSorted()
 		}
 	}
 }
+
 
 public void FindDuplicates_UnSorted_2()
 {
