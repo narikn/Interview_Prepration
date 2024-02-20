@@ -74,5 +74,10 @@ x << 1   => x/2 Power 1
 x<< 2 => x / 2 Power 2
 
 
+Odd or even
+-------------
+If a binary number last bit is one then it is a odd number.
+
+
 
 
