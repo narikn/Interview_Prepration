@@ -1,0 +1,56 @@
+class Program
+{
+	static int PairCalc(int[] A, int n, int K)
+	{
+	
+		int[] rArray = new int[K];
+
+		foreach (int num in A)
+		{
+			rArray[num % K]++;
+		}
+
+		int sum = rArray[0] * (rArray[0] - 1) / 2;  // we are picking two elements from same grpup i.e NC2 =>N*(N-1)/2
+
+		// 1st Condition:  Looping only of the half the remainder to avoid duplicate pairs
+		for (int i = 1; i <= K / 2; i++)
+		{
+			int r2 = K - i;
+			// Ensure not counting pairs twice
+			if (i != r2)
+			{
+				sum += rArray[i] * rArray[r2];
+			}
+		}
+
+		// 2nd Condition: Handling special case when K is even
+		if (K % 2 == 0)
+		{
+			// Counting pairs where both elements are exactly K / 2
+			sum += rArray[K / 2] * (rArray[K / 2] - 1) / 2;
+
+			// Additional comment explaining the special case (e.g., 4,4)
+			// When K is even, there's a special case where one element is exactly K / 2
+			// and the other element is also exactly K / 2. This occurs when the array
+			// contains elements that produce the remainder K / 2 when divided by K.
+			// For example, if K = 4, then this special case counts pairs like (2, 2) where
+			// both elements are exactly 4 / 2 = 2. We add (rArray[K / 2] * (rArray[K / 2] - 1) / 2)
+			// to the sum to count such pairs. This expression calculates the number of pairs
+			// using the frequency of remainders. We subtract 1 from rArray[K / 2] to avoid counting
+			// the element itself as a pair, and then divide by 2 to count each pair only once.
+		}
+
+		return sum;
+	}
+
+	static void Main()
+	{
+		// Example array and values
+		int[] arr = { 1, 3, 5, 7, 9, 4, 2, 8, 0 };
+		int n = 9;
+		int K = 4;
+
+		// Output the count of pairs divisible by K
+		Console.WriteLine(PairCalc(arr, n, K));
+	}
+}
