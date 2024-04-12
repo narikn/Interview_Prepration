@@ -31,9 +31,10 @@ public void PreOrder(TreeNode root)
 }
 
 
+
 public void PreOrder_Iterative(TreeNode _root)
 {
-
+   // DLR
 	if (_root != null)
 	{
 		Stack<TreeNode> st = new Stack<TreeNode>();
