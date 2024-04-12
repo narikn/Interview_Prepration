@@ -1,0 +1,17 @@
+
+
+
+Monotonic Stack
+----------------
+
+ Incoming element-> aIn
+ Top of the stack element ->Stop;
+
+ Right:   Start loop from Zero
+1) Finding Next Greater to Right:(aIn > sTop ) then Push only smaller element into stack , else pop :ie Pop when incoming element is > top of the stack 
+2) Finding Next Greater to Smallest to Right (aIn > sTop ): Just revers 1st condition  ie.   Pop when incoming element is < top of the stack 
+
+Left:   Start loop from End
+
+1) Finding Next Left to Right:(aIn > sTop ) then Push only smaller element into stack , else pop :ie Pop when incoming element is > top of the stack 
+2) Finding Next Left to Smallest to Right (aIn > sTop ): Just revers 1st condition  ie.   Pop when incoming element is < top of the stack 
