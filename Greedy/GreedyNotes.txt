@@ -1,0 +1,22 @@
+
+
+### Greedy & Sorting Needed
+These problems typically incorporate a sorting step to facilitate the application of the greedy method:
+
+1. **Activity Selection Problem** - Activities are sorted by end times to facilitate choosing the maximum number of non-overlapping activities.
+2. **Fractional Knapsack Problem** - Items are sorted by their value-to-weight ratio to prioritize the most valuable items.
+3. **Kruskal’s Algorithm for Minimum Spanning Tree** - Edges are sorted by weight to ensure the smallest edges are considered first.
+4. **Job Sequencing Problem** - Jobs are often sorted by deadline or profit to maximize total profit or meet other criteria.
+5. **Interval Scheduling Maximization by Earliest End Time** - Intervals are sorted by end times to maximize the number of non-overlapping intervals.
+6. **Coin Change Problem** (for some variations) - Coins are sorted by denominations, usually to try using the largest denominations first.
+7. **Dijkstra’s Shortest Path Algorithm** - While not a direct sorting of the initial input, it heavily relies on a priority queue to manage vertex distances efficiently, which is a form of dynamic sorting during execution.
+
+### Greedy & No Sorting Needed
+These problems do not inherently require a pre-sorting step but may use other data structures like heaps or priority queues:
+
+1. **Huffman Coding** - Uses a priority queue based on frequency to build the Huffman tree, rather than traditional sorting.
+2. **Prim’s Algorithm for Minimum Spanning Tree** - Utilizes a priority queue to select the next minimum edge, rather than sorting all edges beforehand.
+3. **Graph Coloring** - Basic greedy coloring does not require sorting, although heuristic enhancements might sort vertices by degree or other criteria.
+4. **Load Balancing Problem** - Direct sorting may not be necessary; the approach depends on how tasks are allocated to resources.
+
+These classifications help highlight the diversity in the application of greedy algorithms, showcasing how sorting can either be a critical or non-essential part of the solution process depending on the problem specifics. This differentiation also underscores the flexibility and varied nature of greedy strategies in problem-solving.
