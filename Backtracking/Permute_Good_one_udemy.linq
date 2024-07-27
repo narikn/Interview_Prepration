@@ -1,6 +1,8 @@
 <Query Kind="Program" />
 
-public static void Main()
+
+
+public void Main()
 {
 	int[] nums = { 1, 2, 3 };
 	var result = Permute(nums);
@@ -10,9 +12,7 @@ public static void Main()
 		Console.WriteLine(string.Join(", ", perm));
 	}
 }
-
-
-public static IList<IList<int>> Permute(int[] nums)
+public  IList<IList<int>> Permute(int[] nums)
 {
 	IList<IList<int>> res = new List<IList<int>>();
 	int n = nums.Length;
@@ -20,29 +20,30 @@ public static IList<IList<int>> Permute(int[] nums)
 	return res;
 }
 
-private static void Helper(int[] nums, int index, int n, IList<IList<int>> res)
+private  void Helper(int[] nums, int i, int n, IList<IList<int>> res)
 {
 	// Base case
-	if (index == n - 1)
+	if (i == n - 1)
 	{
 		res.Add(new List<int>(nums));
 		return;
 	}
 
 	// Recursive case
-	for (int j = index; j < n; j++)
+	for (int j = i; j < n; j++)
 	{
-		Swap(nums, index, j);
-		Helper(nums, index + 1, n, res);
-		Swap(nums, index, j); // backtrack
+		Swap(nums, i, j);     // Swap elements at indices i and j
+		Helper(nums, i + 1, n, res);  // Recursively generate permutations for the next index (i + 1)
+		Swap(nums, i, j); // backtrack :  // Swap back to restore the original array (backtracking)
 	}
 }
 
-private static void Swap(int[] nums, int i, int j)
+private void Swap(int[] nums, int i, int j)
 {
 	int temp = nums[i];
 	nums[i] = nums[j];
 	nums[j] = temp;
 }
+
 
 
