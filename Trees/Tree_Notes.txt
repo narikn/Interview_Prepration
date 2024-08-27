@@ -10,9 +10,15 @@ Tree Traverse
   
 (4) Level order  is Breadth first search traversal  -BFS
 
-
-
-
+  
+     a 
+   /   \
+  b     c
+  
+ 
+  Pre-Order:  abc
+  In-Order:  bac   - sorted
+  Post-Order: bca
 
 
 https://www.hongkiat.com/blog/synchronous-asynchronous-javascript/
